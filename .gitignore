@@ -1,0 +1,10 @@
+*.pdf
+*.aux
+*.log
+*.swp
+*.toc
+*.out
+*.bbl
+*.blg
+*.md.tex
+svg-inkscape

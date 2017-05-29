@@ -1,0 +1,123 @@
+\documentclass[a4paper,14pt]{extarticle}
+
+\input{preamble}
+
+\begin{document}
+\tableofcontents
+\newpage
+
+\phantomsection
+\section*{ВВЕДЕНИЕ}
+\addcontentsline{toc}{section}{ВВЕДЕНИЕ}
+% введение
+\newpage
+
+\section{АНАЛИЗ ТЕХНОЛОГИЙ БЕСПРОВОДНОЙ СВЯЗИ}
+% Пример вставки Markdown (при этом сам markdown может иметь
+% LaTeX-вставки)
+\input{examples/text.md}
+\newpage
+
+\section{АРХИТЕКТУРА КОНТРОЛЛЕРА}
+
+\subsection{Пример растрового изображения}
+
+\begin{figure}[H]
+ \centering
+ \includegraphics[width=150mm,scale=0.5]{examples/avrpinout}
+ \caption{Схема выводов ATMEGA328P-PU}
+ \label{avrpinout}
+\end{figure}
+
+\newpage
+
+\section{РАЗРАБОТКА УСТРОЙСТВА}
+
+\subsection{Пример ссылки на рисунок}
+
+Я ссылаюсь на рисунок \ref{avrpinout}.
+
+\subsection{Пример таблицы}
+
+\begin{table}[H]
+\caption{Предельная толщина препятствия}
+\label{penetration}
+\begin{tabular}{|l|l|l|}
+\hline
+\textbf{Частоты} & \textbf{Кирпичная стена, м.} & \textbf{Бетон, м.} \\ \hline
+434 МГц & 4.3                 & 0.47      \\ \hline
+868 МГц & 2.18                & 0.24      \\ \hline
+2.4 ГГц & 0.78                & 0.09      \\ \hline
+\end{tabular}
+\end{table}
+
+\subsection{Пример нумерованного списка}
+
+\begin{enumerate}
+  \item Список доступных устройств для авторизованного;
+  \item Кнопка получения дополнительной информации по.
+\end{enumerate}
+
+\subsection{Пример ненумерованного списка}
+
+\begin{itemize}
+  \item список доступных устройств для авторизованного;
+  \item кнопка получения дополнительной информации по.
+\end{itemize}
+
+\subsection{Пример ссылки на источник}
+
+Я ссылаюсь на atmelcrystal, описанный в example.bib. \cite{atmelcrystal}
+
+\newpage
+
+\phantomsection
+\section*{ЗАКЛЮЧЕНИЕ}
+\addcontentsline{toc}{section}{ЗАКЛЮЧЕНИЕ}
+% заключение
+\newpage
+
+\phantomsection
+\renewcommand{\refname}{СПИСОК ИСПОЛЬЗОВАННЫХ ИСТОЧНИКОВ}
+\addcontentsline{toc}{section}{СПИСОК ИСПОЛЬЗОВАННЫХ ИСТОЧНИКОВ}
+\bibliographystyle{unsrtnat}
+\bibliography{example}
+\newpage
+
+\phantomsection
+\section*{СЛОВАРЬ ТЕРМИНОВ}
+\addcontentsline{toc}{section}{СЛОВАРЬ ТЕРМИНОВ}
+
+\begin{itemize}
+  \item термин 1: Его значение записывается с заглавной буквы;
+  \item термин 2: Его значение записывается с заглавной буквы.
+\end{itemize}
+
+\newpage
+
+\begin{landscape}
+\phantomsection
+\section*{ПРИЛОЖЕНИЕ А}
+\addcontentsline{toc}{section}{ПРИЛОЖЕНИЕ А}
+\label{appa}
+
+% Пример вставки SVG-изображения (для работы нужен установленный
+% inkscape)
+%\begin{figure}[H]
+% \centering
+% \includesvg[width = 700pt]{examples/schematic}
+% \caption{Электрическая принципиальная схема разработанного контроллера}
+% \label{schematic}
+%\end{figure}
+\end{landscape}
+
+\phantomsection
+\section*{ПРИЛОЖЕНИЕ Б}
+\addcontentsline{toc}{section}{ПРИЛОЖЕНИЕ Б}
+\label{appb}
+
+\includecode{c}{examples/code.c}{Код приёмопередатчика}
+
+\newpage
+
+\end{document}
