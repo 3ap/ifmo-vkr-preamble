@@ -25,9 +25,7 @@ LaTeX-шаблон для написания ВКР для ИТМО (кафед�
 --------------------
 
 ```bash
-find /usr/share/ -name 'loadhyph-ru.tex' -print0 \
-  | sudo xargs -0 sed -i 's/ruhyphen/ruenhyph/g'
-
+sudo sed -i "$(kpsewhich loadhyph-ru.tex)"
 sudo fmtutil-sys --all
 ```
 
