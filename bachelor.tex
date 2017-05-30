@@ -1,0 +1,119 @@
+% Документ, по которому в основном мы ориентировались при написании
+% этой преамбулы:
+%
+%   http://edu.ifmo.ru/file/pages/14/trebovaniya_k_vypusknym_kvalifikacionnym_rabotam.pdf
+%
+
+% Times New Roman для русского языка
+%   Необходим установленный пакет pscyr
+\usepackage{pscyr}
+\renewcommand{\rmdefault}{ftm}
+
+% Полуторный межстрочный интервал
+\usepackage[nodisplayskipstretch]{setspace}
+\onehalfspacing
+
+% Правильные поля для диплома
+\usepackage[top=20mm, bottom=20mm, left=25mm, right=10mm]{geometry}
+
+\addto\captionsrussian{
+% подпись "Рисунок" вместо "Рис"
+  \def\figurename{{Рисунок}}
+% "Оглавление" вместо "Содержание"
+  \def\figurename{{Оглавление}}
+}
+
+% Каждый пункт оглавления должен быть с отточием
+\usepackage{titletoc}
+
+% Максимальная вложенность содержания (только разделы, подразделы и
+% "пункты")
+\setcounter{tocdepth}{3}
+
+% Оглавление должно начинаться на 4 странице
+\setcounter{page}{4}
+
+% Возможность переопределять оглавление и его стиль
+\usepackage{tocloft}
+
+\usepackage{etoolbox}
+
+% Слово "Оглавление" заглавными буквами
+\makeatletter
+\patchcmd{\@cftmaketoctitle}{\cfttoctitlefont\contentsname}{\cfttoctitlefont\MakeUppercase{\contentsname}}{}{}
+\makeatother
+
+% Абзацный отступ равен 1.25 см
+\parindent=1.25cm
+
+% Возможность менять регистр текста в UTF-8
+\usepackage{textcase}
+
+% Формат заголовков
+%   - Заголовок раздела по центру, кернингом побольше (отсебятина),
+%     прописными буквами, выделено жирным, X   ЗАГОЛОВОК
+%   - Заголовок подраздела и "пункта" со смещением, как у абзаца, по
+%     левому краю, выделено жирным, X.Y[.Z]   Заголовок
+\usepackage{titlesec}
+\titleformat{\section}[block]{\centering\bfseries\large}
+                         {\arabic{section}}{1ex}{\MakeUppercase}
+\titleformat{\subsection}[block]{\hspace{\parindent}\bfseries\normalsize}
+                         {\arabic{section}.\arabic{subsection}}{1ex}{}
+\titleformat{\subsubsection}[block]{\hspace{\parindent}\bfseries\normalsize}
+                         {\arabic{section}.\arabic{subsection}.\arabic{subsubsection}}{1ex}{}
+
+% TODO: 14pt * 3 = 42pt (три интервала до и после)
+\titlespacing*{\section}      {0pt}{42pt}{42pt}
+
+% Номер страницы по середине верхнего поля
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[C]{\thepage}
+\renewcommand{\headrulewidth}{0pt}
+
+% Если источников несколько, то сжать из [1,2,3,4] в [1-4]
+\usepackage[numbers,sort&compress]{natbib}
+
+% Стиль нумерования в списке использованных источников: [1] -> 1.
+\makeatletter
+\renewcommand\@biblabel[1]{#1.}
+\makeatother
+
+% Самое длинное тире в качестве разделителя в подписях к рисункам,
+% таблицам, листингам и др.
+\usepackage{caption}
+\DeclareCaptionLabelSeparator{emdash}{ --- }
+\captionsetup{labelsep=emdash}
+
+% Подпись к таблице должна быть по левому краю
+\captionsetup[table]{singlelinecheck=false}
+
+% Сквозная нумерация таблиц, формул, рисунков
+\renewcommand{\theequation}{\arabic{equation}}
+\renewcommand{\thetable}{\arabic{table}}
+\renewcommand{\thefigure}{\arabic{figure}}
+
+% Добавить абзацный отступ для первых абзацев в section/subsection,
+% по умолчанию не добавляется
+\usepackage{indentfirst}
+
+% Возможность вставлять таблицы и рисунки непосредственно там, где
+% они определены (аргумент [H]). Нужно, чтобы таблицы и рисунки были
+% всегда определены под текстом, где на них ссылаются
+\usepackage{float}
+
+% Обязательно переносить слова, чтобы соблюсти поля документа. Для
+% соблюдения полей можно пренебречь правилами для тех слов и
+% словосочетаний, о которых не знают словаря переносов (ruhyphen или
+% ruenhyph). Оно почему-то работает. Взято с:
+%
+%   http://www.latex-community.org/forum/viewtopic.php?p=70342#p70342
+%
+\tolerance 1414
+\hbadness 1414
+\emergencystretch 1.5em
+\hfuzz 0.3pt
+\widowpenalty=10000
+\vfuzz \hfuzz
+\raggedbottom
