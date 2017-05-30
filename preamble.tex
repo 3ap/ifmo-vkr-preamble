@@ -27,8 +27,8 @@
 \addto\captionsrussian{
 % подпись "Рисунок" вместо "Рис"
   \def\figurename{{Рисунок}}
-% ОГЛАВЛЕНИЕ прописными буквами
-  \renewcommand{\contentsname}{ОГЛАВЛЕНИЕ}
+% "Оглавление" вместо "Содержание"
+  \def\figurename{{Оглавление}}
 }
 
 % Каждый пункт оглавления должен быть с отточием
@@ -42,7 +42,14 @@
 \setcounter{page}{4}
 
 % Возможность переопределять оглавление и его стиль
-\usepackage[titles]{tocloft}
+\usepackage{tocloft}
+
+\usepackage{etoolbox}
+
+% Слово "Оглавление" заглавными буквами
+\makeatletter
+\patchcmd{\@cftmaketoctitle}{\cfttoctitlefont\contentsname}{\cfttoctitlefont\MakeUppercase{\contentsname}}{}{}
+\makeatother
 
 % Абзацный отступ равен 1.25 см
 \parindent=1.25cm
